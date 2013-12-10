@@ -1,0 +1,51 @@
+<div class="page-header">
+  <h1><%= image_tag @user.photo_url, width: 70, class: "img-circle" %> <%= @user.full_name %>'s Profile</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>First name</dt>
+  <dd><%= @user.first_name %></dd>
+
+  <dt>Last name</dt>
+  <dd><%= @user.last_name %></dd>
+
+  <dt>Home city</dt>
+  <dd><%= @user.home_city %></dd>
+
+  <dt>Home state</dt>
+  <dd><%= @user.home_state %></dd>
+
+  <dt>Home country</dt>
+  <dd><%= @user.home_country %></dd>
+
+  <dt>Email</dt>
+  <dd><%= @user.email %></dd>
+
+  <dt>User name</dt>
+  <dd><%= @user.user_name %></dd>
+
+  <dt>Password</dt>
+  <dd><%= @user.password %></dd>
+
+  <dt>Photo url</dt>
+  <dd><%= @user.photo_url %>
+
+</dl>
+
+<h2>Replies to my requests</h2>
+
+<% @user.replies.each do |reply| %>
+     <ul>
+ +    <li><p><%= reply.user.full_name %> said <%= reply.reply_text %> -     
+ +    <%= link_to 'See Full Reply Page', reply_url(reply)%></p></li>
+ +  </ul>
+<% end %>
+
+<h2>My Expert Replies to others</h2>
+
+<% @user.expert_replies.each do |reply| %>
+   <ul> 
+ +    <li><p><%= reply.user.full_name %> said <%= reply.reply_text %>  - 
+ +     <%= link_to 'See Full Reply Page', reply_url(reply)%></p></li>
+ +  </ul>
+<% end %>

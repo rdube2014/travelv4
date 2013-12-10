@@ -1,0 +1,140 @@
+<div class="page-header">
+  <h1>1. View or Edit My Profile Information</h1>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Home city</th>
+      <th>Home state</th>
+      <th>Home country</th>
+      <th>Email</th>
+      <th>User name</th>
+      <th>Picture</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+   
+      <tr>
+        <td><%= current_user.first_name %></td>
+        <td><%= current_user.last_name %></td>
+        <td><%= current_user.home_city %></td>
+        <td><%= current_user.home_state %></td>
+        <td><%= current_user.home_country %></td>
+        <td><%= current_user.email %></td>
+        <td><%= current_user.user_name %></td>
+        <td><%= image_tag current_user.photo_url, width: 40, class: "img-circle" %></td>
+        <td><%= link_to '<i class="fa fa-search-plus"></i>'.html_safe, user_url(current_user), class: 'btn btn-primary' %></td>
+        <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_user_url(current_user), class: 'btn btn-warning' %></td>
+        <td><%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, user_url(current_user), method: 'delete', data: { confirm: "Do you really want to delete this user?" }, class: 'btn btn-danger' %></td>
+      </tr>
+   
+  </tbody>
+</table>
+
+<br>
+
+<h1>2. View or Edit My Requests</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Created date</th>
+      <th>Trip start date</th>
+      <th>Trip end date</th>
+      <th>Travel to city</th>
+      <th>Travel to state</th>
+      <th>Category</th>
+      <th>Request text</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+
+<tbody>
+    <% @requests.each do |request| %>
+      <tr>
+        <td><%= request.user.full_name %></td>
+        <td><%= request.created_date %></td>
+        <td><%= request.trip_start_date %></td>
+        <td><%= request.trip_end_date %></td>
+        <td><%= request.travel_to_city %></td>
+        <td><%= request.travel_to_state %></td>
+        <td><%= request.category %></td>
+        <td><%= request.request_text %></td>
+        <td><%= link_to '<i class="fa fa-search-plus"></i>'.html_safe, request_url(request), class: 'btn btn-primary' %></td>
+        <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_request_url(request), class: 'btn btn-warning' %></td>
+        <td><%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, request_url(request), method: 'delete', data: { confirm: "Do you really want to delete this request?" }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h1>3. View or Edit My Replies</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Expert</th>
+      <th>Trip Title</th>
+      <th>Reply text</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @expert_replies.each do |reply| %>
+      <tr>
+        <td><%= reply.user.full_name %></td>
+        <td><%= reply.request.travel_to_city %></td>
+        <td><%= reply.reply_text %></td>
+        <td><%= link_to '<i class="fa fa-search-plus"></i>'.html_safe, reply_url(reply), class: 'btn btn-primary' %></td>
+        <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_reply_url(reply), class: 'btn btn-warning' %></td>
+        <td><%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, reply_url(reply), method: 'delete', data: { confirm: "Do you really want to delete this reply?" }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h1>4. View or Edit My Photos</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Reply</th>
+      <th>Photo</th>
+      <th>Photo caption</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @expert_photos.each do |photo| %>
+      <tr>
+        <td><%= photo.reply_id %></td>
+        <td><%= image_tag photo.photo_url, width: 100, class: "img-circle" %></td>
+        <td><%= photo.photo_caption %></td>
+        <td><%= link_to '<i class="fa fa-search-plus"></i>'.html_safe, photo_url(photo), class: 'btn btn-primary' %></td>
+        <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_photo_url(photo), class: 'btn btn-warning' %></td>
+        <td><%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, photo_url(photo), method: 'delete', data: { confirm: "Do you really want to delete this photo?" }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

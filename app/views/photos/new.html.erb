@@ -1,0 +1,30 @@
+<div class="page-header">
+  <h1>New Photo</h1>
+</div>
+
+
+<%= form_tag(photos_url, method: 'post', class: 'form-horizontal') do %>
+  
+
+  <%= hidden_field_tag :reply_id, params[:id] %>
+
+  <div class="form-group">
+    <%= label_tag :photo_url, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= text_field_tag :photo_url, nil, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :photo_caption, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= text_field_tag :photo_caption, nil, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-offset-2 col-md-6">
+      <%= submit_tag "Create Photo", class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

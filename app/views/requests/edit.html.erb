@@ -1,0 +1,67 @@
+<div class="page-header">
+  <h1>Editing My Trip to <%= @request.travel_to_city %></h1>
+</div>
+
+<%= form_tag(request_url(@request), method: 'patch', class: 'form-horizontal') do %>
+ 
+<%= hidden_field_tag :user_id, current_user.id %>
+
+  <div class="form-group">
+    <%= label_tag :created_date, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= text_field_tag :created_date, @request.created_date, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :trip_start_date, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= text_field_tag :trip_start_date, @request.trip_start_date, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :trip_end_date, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= text_field_tag :trip_end_date, @request.trip_end_date, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :travel_to_city, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= text_field_tag :travel_to_city, @request.travel_to_city, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :travel_to_state, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= text_field_tag :travel_to_state, @request.travel_to_state, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :category, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <select <%= text_field_tag :category, nil, class: 'form-control' %>
+        <option value="1">Leisure</option>
+        <option value="2">Business</option>
+       </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :request_text, nil, class: 'col-md-2 control-label' %>
+    <div class="col-md-6">
+      <%= text_area_tag :request_text, @request.request_text, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-offset-2 col-md-6">
+      <%= submit_tag "Update Request", class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
+

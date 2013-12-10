@@ -1,0 +1,39 @@
+<div class="page-header">
+  <h1><%= @request.user.full_name %> 's Trip to <%= @request.travel_to_city %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>User</dt>
+  <dd><%= @request.user.full_name %></dd>
+
+  <dt>Created date</dt>
+  <dd><%= @request.created_date %></dd>
+
+  <dt>Trip start date</dt>
+  <dd><%= @request.trip_start_date %></dd>
+
+  <dt>Trip end date</dt>
+  <dd><%= @request.trip_end_date %></dd>
+
+  <dt>Travel to city</dt>
+  <dd><%= @request.travel_to_city %></dd>
+
+  <dt>Travel to state</dt>
+  <dd><%= @request.travel_to_state %></dd>
+
+  <dt>Category</dt>
+  <dd><%= @request.category %></dd>
+
+  <dt>Request text</dt>
+  <dd><%= @request.request_text %></dd>
+
+  <dt>Replies received so far:</dt>
+ +  <br>
+ + <% @request.replies.each do |reply| %>
+ +  <ul> 
+ +    <li><p><%= reply.user.full_name %> said <%= reply.reply_text %>  - 
+ +     <%= link_to 'See Full Reply Page', reply_url(reply)%></p></li>
+ +  </ul>
+ +<% end %>
+
+</dl>

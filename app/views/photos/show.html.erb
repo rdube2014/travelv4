@@ -1,0 +1,10 @@
+<div class="page-header">
+  <h4>A photo for added by <%= @photo.reply.user.full_name %> to a reply to <%= @photo.reply.request.user.full_name %>'s request for <%= @photo.reply.request.travel_to_city %> advice </h4>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Photo</dt>
+ +  <dd><%= image_tag @photo.photo_url, width: 600, class: "img-square" %></dd>
+    <dd><%= @photo.photo_caption %></dd>
+
+ </dl>
