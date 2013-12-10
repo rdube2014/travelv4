@@ -21,10 +21,10 @@
     <% @replies.each do |reply| %>
       <tr>
         <td><%= reply.user.full_name %></td>
-        <td><%= reply.request.travel_to_city %></td>
-        <td><%= reply.reply_text %></td>
+        <td><%= reply.request.travel_to_city   %></td>
+        <td><%= truncate(reply.reply_text, length: 200) %></td>
         <td><%= link_to '<i class="fa fa-search-plus"></i>'.html_safe, reply_url(reply), class: 'btn btn-primary' %></td>
-        
+         
        </tr>
     <% end %>
   </tbody>

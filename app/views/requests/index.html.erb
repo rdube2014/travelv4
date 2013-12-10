@@ -31,7 +31,7 @@
         <td><%= request.travel_to_city %></td>
         <td><%= request.travel_to_state %></td>
         <td><%= request.category %></td>
-        <td><%= request.request_text %></td>
+        <td><%= truncate(request.request_text, length: 200) %></td>
         <td><%= link_to '<i class="fa fa-search-plus"></i>'.html_safe, request_url(request), class: 'btn btn-primary' %></td>
       </tr>
     <% end %>

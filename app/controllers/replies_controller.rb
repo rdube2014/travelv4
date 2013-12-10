@@ -10,6 +10,7 @@ end
 
   def index
     @replies = Reply.all
+
   end
 
   def show
@@ -20,6 +21,7 @@ end
   end
 
   def new
+    @reply = Reply.new
   end
 
   def create

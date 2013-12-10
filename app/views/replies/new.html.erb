@@ -2,6 +2,17 @@
   <h1>New Reply</h1>
 </div>
 
+<% if @reply.errors.any? %>
+  <ul>
+    <% @reply.errors.full_messages.each do |message| %>
+      <div class="alert alert-dismissable alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <ul><%= message %></ul>
+      </div>
+      <% end %>
+  </ul>
+  <% end %> 
+
 <%= form_tag(replies_url, method: 'post', class: 'form-horizontal') do %>
   
   <div class="form-group">

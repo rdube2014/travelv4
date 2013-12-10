@@ -28,12 +28,12 @@
   <dd><%= @request.request_text %></dd>
 
   <dt>Replies received so far:</dt>
- +  <br>
- + <% @request.replies.each do |reply| %>
- +  <ul> 
- +    <li><p><%= reply.user.full_name %> said <%= reply.reply_text %>  - 
- +     <%= link_to 'See Full Reply Page', reply_url(reply)%></p></li>
- +  </ul>
- +<% end %>
+   <br>
+  <% @request.replies.each do |reply| %>
+   <ul> 
+     <li><p><%= reply.user.full_name %> said <%= reply.reply_text %>  - 
+      <%= link_to 'See Full Reply Page', reply_url(reply)%></p></li>
+   </ul>
+ <% end %>
 
 </dl>

@@ -2,6 +2,17 @@
   <h1>Editing My Trip to <%= @request.travel_to_city %></h1>
 </div>
 
+<% if @request.errors.any? %>
+  <ul>
+    <% @request.errors.full_messages.each do |message| %>
+      <div class="alert alert-dismissable alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <ul><%= message %></ul>
+      </div>
+      <% end %>
+  </ul>
+  <% end %> 
+
 <%= form_tag(request_url(@request), method: 'patch', class: 'form-horizontal') do %>
  
 <%= hidden_field_tag :user_id, current_user.id %>

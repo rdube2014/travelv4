@@ -1,5 +1,13 @@
 class UsersController < ApplicationController
 
+before_action(:authorize_user)
+
+def authorize_user
+  unless user_signed_in?
+    redirect_to new_user_session_path, notice: "You must be signed in."
+  end
+end
+
   def index
     @users = User.all
     @requests = Request.where(user_id: current_user.id)

@@ -24,9 +24,6 @@
   <dt>User name</dt>
   <dd><%= @user.user_name %></dd>
 
-  <dt>Password</dt>
-  <dd><%= @user.password %></dd>
-
   <dt>Photo url</dt>
   <dd><%= @user.photo_url %>
 
@@ -36,16 +33,16 @@
 
 <% @user.replies.each do |reply| %>
      <ul>
- +    <li><p><%= reply.user.full_name %> said <%= reply.reply_text %> -     
- +    <%= link_to 'See Full Reply Page', reply_url(reply)%></p></li>
- +  </ul>
+     <li><p><%= reply.user.full_name %> said <%= truncate(reply.reply_text, length: 200) %> -     
+     <%= link_to 'See Full Reply Page', reply_url(reply)%></p></li>
+   </ul>
 <% end %>
 
 <h2>My Expert Replies to others</h2>
 
 <% @user.expert_replies.each do |reply| %>
    <ul> 
- +    <li><p><%= reply.user.full_name %> said <%= reply.reply_text %>  - 
- +     <%= link_to 'See Full Reply Page', reply_url(reply)%></p></li>
- +  </ul>
+     <li><p><%= reply.user.full_name %> said <%= truncate(reply.reply_text, length: 200) %>  - 
+      <%= link_to 'See Full Reply Page', reply_url(reply)%></p></li>
+   </ul>
 <% end %>
